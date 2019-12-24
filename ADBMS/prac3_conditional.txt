@@ -1,0 +1,89 @@
+Declare 
+empno number;
+EMP_COUNT NUMBER;
+SALARY NUMBER;
+HRA NUMBER;
+DA NUMBER;
+NET_SALARY NUMBER; 
+BEGIN 
+empno:=:ENTER_EMPLOYEE_NUMBER;
+SELECT COUNT(*) INTO EMP_COUNT FROM employee_master07 WHERE ID=empno;
+DBMS_OUTPUT.PUT_LINE(EMP_COUNT); 
+IF EMP_COUNT = 1 THEN
+  SELECT SALARY INTO "SALARY" FROM employee_master07 WHERE ID=empno;
+  DBMS_OUTPUT.PUT_LINE(SALARY);
+  HRA:=(SALARY*10)/100;
+  DA:=(SALARY*60)/100;
+  NET_SALARY:=SALARY+HRA+DA;
+  DBMS_OUTPUT.PUT_LINE('YOUR BASIC SALARY IS:' || NET_SALARY);
+ELSE
+ DBMS_OUTPUT.PUT_LINE('SORRY NO EMPLOYEE FOUND'); 
+END IF;
+END;
+
+
+DECLARE 
+EMPNO NUMBER;
+MY_SALARY NUMBER ;
+BEGIN
+EMPNO:=:ENTER_EMPLOYEE_NUMBER;
+SELECT SALARY INTO MY_SALARY FROM employee_master07 WHERE ID=EMPNO;
+DBMS_OUTPUT.PUT_LINE(MY_SALARY); 
+dbms_output.put_line('Program started.' );
+IF( MY_SALARY >= 60000) THEN 
+dbms_output.put_line('VERY HIGH SALARY');
+ELSIF(MY_SALARY >= 30000 AND MY_SALARY < 60000) THEN
+dbms_output.put_line('HIGH SALARY'); 
+ELSIF(MY_SALARY >=10000 AND MY_SALARY < 300000) THEN
+dbms_output.put_line('MEDIUM SALARY');
+ELSE
+dbms_output.put_line('LESS SALARY');
+END IF;
+dbms_output.put_line('Program completed.'); 
+END;
+
+
+
+DECLARE 
+EMPNO NUMBER;
+MY_SALARY NUMBER ;
+BEGIN
+EMPNO:=:ENTER_EMPLOYEE_NUMBER;
+SELECT SALARY INTO MY_SALARY FROM employee_master07 WHERE ID=EMPNO;
+DBMS_OUTPUT.PUT_LINE(MY_SALARY); 
+dbms_output.put_line('Program started.' );
+IF( MY_SALARY >= 60000) THEN 
+dbms_output.put_line('VERY HIGH SALARY');
+ELSIF(MY_SALARY >= 30000 AND MY_SALARY < 60000) THEN
+dbms_output.put_line('HIGH SALARY'); 
+ELSIF(MY_SALARY >=10000 AND MY_SALARY < 300000) THEN
+dbms_output.put_line('MEDIUM SALARY');
+ELSE
+dbms_output.put_line('LESS SALARY');
+END IF;
+dbms_output.put_line('Program completed.'); 
+END;
+
+
+DECLARE
+HIR_DATE VARCHAR2(20);
+EMPNO NUMBER;
+BEGIN
+EMPNO:=:ENTER_EMPLOYEE_NUMBER;
+SELECT EXTRACT(Month FROM HIRE_DATE) INTO HIR_DATE FROM employee_master07 WHERE ID=EMPNO;
+CASE HIR_DATE
+ WHEN '1' THEN dbms_output.put_line('january');
+ WHEN '2' THEN dbms_output.put_line('february');
+ WHEN '3' THEN dbms_output.put_line('march');
+ WHEN '4' THEN dbms_output.put_line('april');
+ WHEN '5' THEN dbms_output.put_line('may');
+ WHEN '6' THEN dbms_output.put_line('june');
+ WHEN '7' THEN dbms_output.put_line('july');
+ WHEN '8' THEN dbms_output.put_line('august');
+ WHEN '9' THEN dbms_output.put_line('september');
+ WHEN '10' THEN dbms_output.put_line('october'); 
+ WHEN '11' THEN dbms_output.put_line('november');
+ WHEN '12' THEN dbms_output.put_line('december');
+ END CASE;
+END;
+

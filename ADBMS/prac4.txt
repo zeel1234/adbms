@@ -1,0 +1,34 @@
+1.
+DECLARE 
+        I NUMBER:=1;
+        RES NUMBER:=1;
+
+
+PROCEDURE Fact (X IN NUMBER) 
+IS
+ BEGIN
+        WHILE   I<=X LOOP
+             
+             RES:=(RES*I);
+                 
+             I:=I+1;
+
+    END LOOP;
+         DBMS_OUTPUT.PUT_LINE(RES);
+
+END;
+BEGIN
+Fact(7);
+
+4.
+DECLARE        
+a number; 
+PROCEDURE Shape(x OUT number) IS
+ BEGIN
+       x:=3.14*a*a;
+END;
+BEGIN   
+     a:= 5;   
+     Shape(a);  
+     dbms_output.put_line(' AREA of 5: ' || a); 
+END;END;
